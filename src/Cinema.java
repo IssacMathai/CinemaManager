@@ -3,6 +3,11 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Cinema {
+    private static int numPurchasedTickets;
+    private static int totalSeats;
+    private static int currentIncome;
+    private static int totalIncome;
+
 
     public static void main(String[] args) {
         // Ask user for # rows & # seats per row
@@ -11,6 +16,8 @@ public class Cinema {
         int numRows = scanner.nextInt();
         System.out.println("Enter the number of seats in each row:");
         int numSeatsPerRow = scanner.nextInt();
+
+        totalSeats = numRows * numSeatsPerRow;
 
         // Initialize cinema
         String[][] cinema = new String[numRows][numSeatsPerRow];
@@ -37,7 +44,8 @@ public class Cinema {
                     int totalSeats = numRows * numSeatsPerRow;
                     int frontHalf = (numRows / 2);
                     cinema[userRowNumber - 1][userSeatNumber - 1] = "B";
-                    int ticketPrice = getTicketPrice(userRowNumber, totalSeats, frontHalf);
+                    int ticketPrice = getTicketPrice(userRowNumber, totalSeats, frontHalf, numSeatsPerRow, numRows);
+                    currentIncome += ticketPrice;
                     valid = true;
                     outOfBounds = false;
                 } else {
@@ -66,12 +74,32 @@ public class Cinema {
                 break;
             case 2:
                 purchaseTicket(scanner, numRows, numSeatsPerRow, cinema);
+                numPurchasedTickets += 1;
                 getUserInput(scanner, numRows, numSeatsPerRow, cinema);
                 break;
+            case 3:
+                printStatistics(numSeatsPerRow, numRows);
+                getUserInput(scanner, numRows, numSeatsPerRow, cinema);
+
         }
     }
 
-    private static int getTicketPrice(int userRowNumber, int totalSeats, int frontHalf) {
+    private static void printStatistics(int numSeatsPerRow, int numRows) {
+        if (totalSeats > 60) {
+            int frontHalf = (numRows / 2);
+            totalIncome = (frontHalf * numSeatsPerRow * 10) + ((numRows - frontHalf) * numSeatsPerRow * 8);
+        } else {
+            totalIncome = totalSeats * 10;
+        }
+
+        System.out.printf("Number of purchased tickets: %d \n", numPurchasedTickets);
+        float percentage = ((float) numPurchasedTickets /totalSeats) * 100;
+        System.out.printf("Percentage: %.2f%s\n", percentage, "%");
+        System.out.printf("Current income: $%d \n", currentIncome);
+        System.out.printf("Total income: $%d \n", totalIncome);
+    }
+
+    private static int getTicketPrice(int userRowNumber, int totalSeats, int frontHalf, int numSeatsPerRow, int numRows) {
         int ticketPrice;
         if (totalSeats > 60) {
             if (userRowNumber <= frontHalf) {
