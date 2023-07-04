@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
+
 public class Cinema {
 
     public static void main(String[] args) {
@@ -21,21 +23,37 @@ public class Cinema {
 
     private static void purchaseTicket(Scanner scanner, int numRows, int numSeatsPerRow, String[][] cinema) {
         // Get user's chosen seat
-        System.out.println("\nEnter a row number:");
-        int userRowNumber = scanner.nextInt();
-        System.out.println("Enter a seat number in that row:");
-        int userSeatNumber = scanner.nextInt();
+        boolean valid = false;
+        boolean outOfBounds = true;
+        while (!valid && outOfBounds) {
+            System.out.println("\nEnter a row number:");
+            int userRowNumber = scanner.nextInt();
+            System.out.println("Enter a seat number in that row:");
+            int userSeatNumber = scanner.nextInt();
 
-        // Calculate ticket prices, book seat and print user's ticket price
-        int totalSeats = numRows * numSeatsPerRow;
-        int frontHalf = (numRows / 2);
-        cinema[userRowNumber - 1][userSeatNumber - 1] = "B";
-        int ticketPrice = getTicketPrice(userRowNumber, totalSeats, frontHalf);
+            if (userRowNumber <= numRows && userRowNumber > 0 && userSeatNumber <= numSeatsPerRow && userSeatNumber > 0) {
+                if (Objects.equals(cinema[userRowNumber - 1][userSeatNumber - 1], "S")) {
+                    // Calculate ticket prices, book seat and print user's ticket price
+                    int totalSeats = numRows * numSeatsPerRow;
+                    int frontHalf = (numRows / 2);
+                    cinema[userRowNumber - 1][userSeatNumber - 1] = "B";
+                    int ticketPrice = getTicketPrice(userRowNumber, totalSeats, frontHalf);
+                    valid = true;
+                    outOfBounds = false;
+                } else {
+                    System.out.println("That ticket has already been purchased!");
+                }
+            } else {
+                System.out.println("Wrong Input!");
+            }
+        }
     }
+
 
     public static void getUserInput(Scanner scanner, int numRows, int numSeatsPerRow, String[][] cinema) {
         System.out.println("\n1. Show the seats");
         System.out.println("2. Buy a ticket");
+        System.out.println("3. Statistics");
         System.out.println("0. Exit");
 
         int input = scanner.nextInt();
