@@ -96,7 +96,7 @@ public class Cinema {
         float percentage = ((float) numPurchasedTickets /totalSeats) * 100;
         System.out.printf("Percentage: %.2f%s\n", percentage, "%");
         System.out.printf("Current income: $%d \n", currentIncome);
-        System.out.printf("Total income: $%d \n", totalIncome);
+        System.out.printf("Total potential income: $%d \n", totalIncome);
     }
 
     private static int getTicketPrice(int userRowNumber, int totalSeats, int frontHalf, int numSeatsPerRow, int numRows) {
