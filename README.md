@@ -18,7 +18,8 @@ Cinema Manager was developed while I was beginning to learn Java in University. 
 Next time, I would create a GUI using JavaFX rather than being a command line application. This would be more aesthetically pleasing and be more user friendly.
 
 ## Screenshots
+<img src="https://github.com/IssacMathai/CinemaManager/assets/82129993/6ab2dff7-9677-4c84-8ace-990df69bcea7" width="200">
+<img src="https://github.com/IssacMathai/CinemaManager/assets/82129993/d2c60d16-3812-415c-93ac-8c1943c67e40" width="180" height="290">
+<img src="https://github.com/IssacMathai/CinemaManager/assets/82129993/26645a64-39ab-460f-88f1-8ca08fab3f25" width="200">
 
-![image](https://github.com/IssacMathai/CinemaManager/assets/82129993/6ab2dff7-9677-4c84-8ace-990df69bcea7)
-![image](https://github.com/IssacMathai/CinemaManager/assets/82129993/d2c60d16-3812-415c-93ac-8c1943c67e40)
-![image](https://github.com/IssacMathai/CinemaManager/assets/82129993/26645a64-39ab-460f-88f1-8ca08fab3f25)
+
