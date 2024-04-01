@@ -1,7 +1,7 @@
 # CinemaManager
 Cinema Manager is a command line Java application designed to help manage a cinema theatre. You can sell tickets, check available seats and see sales statistics.
 
-To open the application, run Cinema.java.
+To open the application, run Cinema.java which is located in the src folder.
 
 ## Features
 Cinema Manager offers the following features:
